@@ -1,12 +1,14 @@
 package com.tplp3.reviews;
 
 public class User {
-	String username;
-	String email;
-	String passw;
+	protected String username;
+	protected String email;
+	protected String passw;
+	protected boolean passwordIsStillValid;
 	
-	User(String nombre, String apellido, int edad){}
-
+	User(String username, String email, String passw){}
+	public boolean login(String username,String passw) {return true;}
+	public void changePassword(String oldpassw, String newPassw) {};
 	public String getUsername() {
 		return username;
 	}
