@@ -7,7 +7,13 @@ public class Admin extends User {
 	Admin(String username, String email, String passw){
 		super( username,  email,  passw);
 	}
-	
+	public static void main(String[] args) {
+		System.out.println("Hello World!");
+		Admin a= new Admin("a","v","c");
+		Spectator b= new Spectator("a","v","c");
+		System.out.println(Admin.getCounter());
+
+	}
 	public User createUser(String username, String email, String passw,Map<String, Object> map) {
 		//With map we identifies what type of user to create and their atributes
 		return null;
@@ -26,8 +32,7 @@ public class Admin extends User {
 	public Content editContent(Map<String, Object> map) {return null;}
 	public Review editReview(String company, Content cont, float rating) {return null;}
 	public Promotion editPromotion(Map<String, Object> map) {return null;}
-	
-	
+	public static User changePassword(User user,String oldPasswd,String newPasswd) {return null;};
 	
 	
 	

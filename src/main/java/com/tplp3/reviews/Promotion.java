@@ -4,8 +4,10 @@ public class Promotion {
 	protected String name;
 	protected String site;
 	protected boolean isvalid= false;
+	private static int counter;
 	public Promotion(String name, String site) {
 		super();
+		counter++;
 		this.name = name;
 		this.site = site;
 	}
@@ -27,6 +29,6 @@ public class Promotion {
 	public void setIsvalid(boolean isvalid) {
 		this.isvalid = isvalid;
 	}
-
+	public static int getCounter() {return counter;}
 	
 }

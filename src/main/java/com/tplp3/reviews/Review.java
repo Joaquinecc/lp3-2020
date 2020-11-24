@@ -1,11 +1,13 @@
 package com.tplp3.reviews;
 
 public class Review {
+	private static int counter;
 	protected String site;
 	protected Content cont;
 	protected float rating;
 	public Review(String site, Content cont, float rating) {
 		super();
+		counter++;
 		this.site = site;
 		this.cont = cont;
 		this.rating = rating;
@@ -28,6 +30,6 @@ public class Review {
 	public void setRating(float rating) {
 		this.rating = rating;
 	}
-	
+	public static int getCounter() {return counter;}
 	
 }
