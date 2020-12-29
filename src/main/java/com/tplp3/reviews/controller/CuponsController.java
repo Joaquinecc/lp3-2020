@@ -13,8 +13,8 @@ import com.tplp3.reviews.service.CuponsService;
 import com.tplp3.reviews.constant.ApiPath;	
 
 
-//@RestController
-//@RequestMapping(ApiPath.CUPONS)
+@RestController
+@RequestMapping(ApiPath.CUPONS)
 public class CuponsController {
 	@Autowired
 	private CuponsService cuponsService;
