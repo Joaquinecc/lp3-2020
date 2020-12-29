@@ -12,6 +12,7 @@ public class PreaccessPremiere extends Promotion {
 	
 	
 	protected Date dateofPremiere;
+	//ForeingKey
 	@ManyToOne
 	protected Movie movie;
 	PreaccessPremiere(){}

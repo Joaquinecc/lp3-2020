@@ -15,8 +15,8 @@ import com.tplp3.reviews.service.PreaccessPremiereService;
 import com.tplp3.reviews.constant.ApiPath;	
 
 
-//@RestController
-//@RequestMapping(ApiPath.PREACCESS)
+@RestController
+@RequestMapping(ApiPath.PREACCESS)
 public class PreaccessPremiereController {
 	@Autowired
 	private PreaccessPremiereService preaccessPremiereService;
