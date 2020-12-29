@@ -13,8 +13,8 @@ import com.tplp3.reviews.constant.ApiPath;
 import com.tplp3.reviews.domain.Discount;
 import com.tplp3.reviews.service.DiscountService;
 
-//@RestController
-//@RequestMapping(ApiPath.DISCOUNT)
+@RestController
+@RequestMapping(ApiPath.DISCOUNT)
 public class DiscountController {
 	@Autowired
 	private DiscountService adminService;
