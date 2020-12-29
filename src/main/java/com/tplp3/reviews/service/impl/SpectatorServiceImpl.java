@@ -16,21 +16,21 @@ import org.springframework.stereotype.Service;
 @Service
 public class SpectatorServiceImpl implements com.tplp3.reviews.service.SpectatorService {
 	@Autowired
-	private SpectatorRepository adminRepository;
+	private SpectatorRepository spectatorRepository;
 	@Override
 	public Spectator findById(Long id) {
-		Spectator admin=null;
-		Optional<Spectator> option= adminRepository.findById(id);
+		Spectator spectator=null;
+		Optional<Spectator> option= spectatorRepository.findById(id);
 		if (option.isPresent()) {
-			admin = option.get();
+			spectator = option.get();
 		}
-		return admin;
+		return spectator;
 	}
 
 	@Override
 	public List<Spectator> findAll() {
 		List<Spectator> users = new ArrayList<>();
-		Iterator<Spectator> iterator = adminRepository.findAll().iterator();
+		Iterator<Spectator> iterator = spectatorRepository.findAll().iterator();
 		while (iterator.hasNext()) {
 			users.add(iterator.next());
 		}
@@ -38,15 +38,15 @@ public class SpectatorServiceImpl implements com.tplp3.reviews.service.Spectator
 	}
 
 	@Override
-	public void save(Spectator admin) {
+	public void save(Spectator spectator) {
 		// TODO Auto-generated method stub
-		adminRepository.save(admin);
+		spectatorRepository.save(spectator);
 		
 	}
 
 	@Override
 	public void delete(Long id) {
-			adminRepository.deleteById(id);
+			spectatorRepository.deleteById(id);
 		// TODO Auto-generated method stub
 		
 	}

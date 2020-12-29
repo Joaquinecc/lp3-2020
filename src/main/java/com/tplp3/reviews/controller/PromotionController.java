@@ -13,8 +13,8 @@ import com.tplp3.reviews.constant.ApiPath;
 import com.tplp3.reviews.domain.Promotion;
 import com.tplp3.reviews.service.PromotionService;
 
-//@RestController
-//@RequestMapping(ApiPath.PROMOTION)
+@RestController
+@RequestMapping(ApiPath.PROMOTION)
 public class PromotionController {
 
 	@Autowired
