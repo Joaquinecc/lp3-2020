@@ -13,8 +13,8 @@ import com.tplp3.reviews.service.CuradorService;
 import com.tplp3.reviews.constant.ApiPath;	
 
 
-//@RestController
-//@RequestMapping(ApiPath.CURADOR)
+@RestController
+@RequestMapping(ApiPath.CURADOR)
 public class CuradorController {
 	@Autowired
 	private CuradorService curadorservice;
