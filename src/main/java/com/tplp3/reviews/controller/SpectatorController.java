@@ -13,8 +13,8 @@ import com.tplp3.reviews.service.SpectatorService;
 import com.tplp3.reviews.constant.ApiPath;	
 
 
-//@RestController
-//@RequestMapping(ApiPath.SPECTATOR)
+@RestController
+@RequestMapping(ApiPath.SPECTATOR)
 public class SpectatorController {
 	@Autowired
 	private SpectatorService spectatorService;
