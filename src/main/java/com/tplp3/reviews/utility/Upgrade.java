@@ -1,6 +1,12 @@
-package com.tplp3.reviews.domain;
+package com.tplp3.reviews.utility;
 
 import java.util.ArrayList;
+
+import com.tplp3.reviews.domain.Admin;
+import com.tplp3.reviews.domain.Curador;
+import com.tplp3.reviews.domain.Promotion;
+import com.tplp3.reviews.domain.Spectator;
+import com.tplp3.reviews.domain.UserPremium;
 
 public class Upgrade {
 //Class meant to upgrade user power

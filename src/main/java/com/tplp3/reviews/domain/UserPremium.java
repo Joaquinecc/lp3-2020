@@ -14,7 +14,7 @@ public class UserPremium extends Spectator {
 	protected ArrayList<Promotion> PromotionAvailable ;
 	
 	UserPremium(){}
-	UserPremium(String username, String email, String passw) {
+	public UserPremium(String username, String email, String passw) {
 	
 		super(username, email, passw);
 		// TODO Auto-generated constructor stub

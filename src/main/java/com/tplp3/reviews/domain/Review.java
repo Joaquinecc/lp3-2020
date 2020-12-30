@@ -1,4 +1,5 @@
 package com.tplp3.reviews.domain;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,7 +16,7 @@ public class Review {
 	private long reviewId;
 	private static int counter;
 	protected String site;
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	protected Content cont;
 	protected float rating;
 	Review (){}

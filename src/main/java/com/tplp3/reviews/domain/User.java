@@ -9,9 +9,10 @@ import java.util.Date;
 
 @Entity
 public class User {
-	@Id
+	
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@Id
+	protected long id;
 	protected String username;
 	protected String email;
 	protected String passw;

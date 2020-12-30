@@ -1,6 +1,8 @@
 package com.tplp3.reviews.domain;
 
 import java.sql.Date;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -9,11 +11,9 @@ import javax.persistence.ManyToOne;
 @Entity
 public class PreaccessPremiere extends Promotion {
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	
-	
 	protected Date dateofPremiere;
 	//ForeingKey
-	@ManyToOne
+	@ManyToOne(cascade = {CascadeType.ALL})
 	protected Movie movie;
 	PreaccessPremiere(){}
 	public PreaccessPremiere(String name, String site, Date dateofPremiere) {

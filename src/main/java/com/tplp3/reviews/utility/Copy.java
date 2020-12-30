@@ -1,5 +1,8 @@
-package com.tplp3.reviews.domain;
+package com.tplp3.reviews.utility;
 import java.util.ArrayList;
+
+import com.tplp3.reviews.domain.Promotion;
+import com.tplp3.reviews.domain.UserPremium;
 public class Copy {
 	
 	//This function is useful when you want to create a new userPremium but want the same promotion that other userPremium have
