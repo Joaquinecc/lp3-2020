@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.tplp3.reviews.domain.User;
+import com.tplp3.reviews.exception.IdNotFound;
 
 @Service
 public interface UserService {
@@ -15,5 +16,5 @@ public interface UserService {
 
 	void delete(Long id);
 	
-	void update(User user,Long id);
+	void update(User user,Long id) throws IdNotFound;
 }

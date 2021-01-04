@@ -1,7 +1,6 @@
 package com.tplp3.reviews.service.impl;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
@@ -10,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tplp3.reviews.domain.User;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.UserRepository;  
 
 @Service
@@ -51,10 +51,12 @@ public class UserServiceImpl implements com.tplp3.reviews.service.UserService{
 	}
 
 	@Override
-	public void update(User user, Long id) {
+	public void update(User user, Long id) throws IdNotFound {
 		// TODO Auto-generated method stub
 		if(userRepository.existsById(id)) {
 			userRepository.save(user);
+		}else {
+			throw new IdNotFound("user");
 		}
 		
 	}
