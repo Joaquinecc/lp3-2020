@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.domain.Review;
+import com.tplp3.reviews.domain.Spectator;
 import com.tplp3.reviews.service.ReviewService;
 import com.tplp3.reviews.constant.ApiPath;	
 
@@ -38,7 +39,11 @@ public class ReviewController {
     public void delete(@PathVariable("id") Long id) {
     	reviewService.delete(id);
     }
-
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody Review review) {
+    	review.setReviewId(id);
+    	reviewService.update(review, id);
+    }
 
 }
 

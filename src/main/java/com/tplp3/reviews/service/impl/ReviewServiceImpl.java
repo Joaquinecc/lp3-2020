@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tplp3.reviews.domain.Review;
+import com.tplp3.reviews.domain.User;
 import com.tplp3.reviews.repository.ReviewRepository;
 import com.tplp3.reviews.service.ReviewService;
 
@@ -48,6 +49,14 @@ public class ReviewServiceImpl implements ReviewService{
 	public void delete(Long id) {
 			reviewRepository.deleteById(id);
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(Review review, Long id) {
+		// TODO Auto-generated method stub
+		if(reviewRepository.existsById(id)) {
+			reviewRepository.save(review);
+		}
 		
 	}
 }

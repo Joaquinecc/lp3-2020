@@ -4,6 +4,7 @@ import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
@@ -13,8 +14,9 @@ public class PreaccessPremiere extends Promotion {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Date dateofPremiere;
 	//ForeingKey
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
 	protected Movie movie;
+
 	PreaccessPremiere(){}
 	public PreaccessPremiere(String name, String site, Date dateofPremiere) {
 		super(name, site);

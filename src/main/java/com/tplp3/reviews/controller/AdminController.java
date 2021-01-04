@@ -38,5 +38,10 @@ public class AdminController {
     public void delete(@PathVariable("id") Long id) {
     	adminService.delete(id);
     }
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody Admin admin) {
+    	admin.setId(id);
+    	adminService.update(admin, id);
+    }
 
 }

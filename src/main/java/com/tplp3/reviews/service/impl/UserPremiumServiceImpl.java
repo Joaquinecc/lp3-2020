@@ -7,6 +7,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import com.tplp3.reviews.domain.User;
 import com.tplp3.reviews.domain.UserPremium;
 import com.tplp3.reviews.repository.UserPremiumRepository;
 
@@ -47,6 +48,14 @@ public class UserPremiumServiceImpl implements com.tplp3.reviews.service.UserPre
 	public void delete(Long id) {
 			userPremiumRepository.deleteById(id);
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(UserPremium userPremium, Long id) {
+		// TODO Auto-generated method stub
+		if(userPremiumRepository.existsById(id)) {
+			userPremiumRepository.save(userPremium);
+		}
 		
 	}
 }

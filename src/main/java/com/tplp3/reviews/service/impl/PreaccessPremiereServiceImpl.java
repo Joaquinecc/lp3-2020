@@ -1,6 +1,7 @@
 package com.tplp3.reviews.service.impl;
 
 import com.tplp3.reviews.domain.PreaccessPremiere;
+import com.tplp3.reviews.domain.User;
 import com.tplp3.reviews.repository.PreaccessPremiereRepository;
 import java.util.ArrayList;
 
@@ -46,6 +47,14 @@ public class PreaccessPremiereServiceImpl implements com.tplp3.reviews.service.P
 	public void delete(Long id) {
 			preaccessPremiereRepository.deleteById(id);
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(PreaccessPremiere preaccessPremiere, Long id) {
+		// TODO Auto-generated method stub
+		if(preaccessPremiereRepository.existsById(id)) {
+			preaccessPremiereRepository.save(preaccessPremiere);
+		}
 		
 	}
 }

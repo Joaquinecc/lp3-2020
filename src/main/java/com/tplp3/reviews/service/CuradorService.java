@@ -12,4 +12,7 @@ public interface CuradorService {
 	void save(Curador curador);
 
 	void delete(Long id);
+	
+
+	void update(Curador curador,Long id);
 }

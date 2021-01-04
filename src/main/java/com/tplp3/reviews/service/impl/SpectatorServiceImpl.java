@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tplp3.reviews.domain.Spectator;
+import com.tplp3.reviews.domain.User;
 import com.tplp3.reviews.repository.SpectatorRepository;
 
 import org.springframework.stereotype.Service; 
@@ -48,6 +49,14 @@ public class SpectatorServiceImpl implements com.tplp3.reviews.service.Spectator
 	public void delete(Long id) {
 			spectatorRepository.deleteById(id);
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(Spectator spectator, Long id) {
+		// TODO Auto-generated method stub
+		if(spectatorRepository.existsById(id)) {
+			spectatorRepository.save(spectator);
+		}
 		
 	}
 }

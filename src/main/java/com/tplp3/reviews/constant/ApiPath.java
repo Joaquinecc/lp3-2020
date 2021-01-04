@@ -11,7 +11,7 @@ public class ApiPath {
 	public static final String PROMOTION = BASE_API + "/promotion";
 	public static final String CUPONS = BASE_API + "/cupons";
 	public static final String DISCOUNT = BASE_API + "/discount";
-	public static final String PREACCESS = BASE_API + "/preacces";
+	public static final String PREACCESS = BASE_API + "/preaccess";
 	public static final String MOVIE = BASE_API + "/movie";
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+
 import com.tplp3.reviews.domain.Movie;
 import com.tplp3.reviews.service.MovieService;
 import com.tplp3.reviews.constant.ApiPath;	
@@ -39,6 +40,11 @@ public class MovieController{
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id) {
     	movieService.delete(id);
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody Movie movie) {
+    	movie.setContentId(id);
+    	movieService.update(movie, id);
     }
 }
 

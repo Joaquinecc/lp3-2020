@@ -38,6 +38,11 @@ public class CuradorController {
     public void delete(@PathVariable("id") Long id) {
     	curadorservice.delete(id);
     }
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody Curador curador) {
+    	curador.setId(id);
+    	curadorservice.update(curador, id);
+    }
 
 
 }

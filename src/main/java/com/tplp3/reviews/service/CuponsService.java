@@ -10,5 +10,7 @@ public interface CuponsService {
 	void save(Cupons cupons);
 
 	void delete(Long id);
+	
+	void update(Cupons cupons,Long id);
 
 }

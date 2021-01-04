@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.tplp3.reviews.domain.Admin;
 
+
 public interface AdminService {
 	Admin findById(Long id);
 
@@ -12,4 +13,6 @@ public interface AdminService {
 	void save(Admin admin);
 
 	void delete(Long id);
+	
+	void update(Admin admin,Long id);
 }

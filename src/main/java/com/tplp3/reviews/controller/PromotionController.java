@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.constant.ApiPath;
 import com.tplp3.reviews.domain.Promotion;
+import com.tplp3.reviews.domain.Promotion;
 import com.tplp3.reviews.service.PromotionService;
 
 @RestController
@@ -18,25 +19,30 @@ import com.tplp3.reviews.service.PromotionService;
 public class PromotionController {
 
 	@Autowired
-	private PromotionService adminService;
+	private PromotionService promotionService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Promotion greetings(@PathVariable("id") Long id) {
-    	Promotion Admins = adminService.findById(id);
+    	Promotion Admins = promotionService.findById(id);
         return Admins;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Promotion> list() {
-        return adminService.findAll();
+        return promotionService.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public void add(@RequestBody Promotion prom) {
-    	adminService.save(prom);
+    	promotionService.save(prom);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id) {
-    	adminService.delete(id);
+    	promotionService.delete(id);
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody Promotion promotion) {
+    	promotion.setPromotionId(id);
+    	promotionService.update(promotion, id);
     }
 }

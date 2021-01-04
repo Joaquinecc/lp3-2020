@@ -47,4 +47,13 @@ public class DiscountServiceImpl implements com.tplp3.reviews.service.DiscountSe
 		// TODO Auto-generated method stub
 		
 	}
+	
+	@Override
+	public void update(Discount discount, Long id) {
+		// TODO Auto-generated method stub
+		if(discountRepository.existsById(id)) {
+			discountRepository.save(discount);
+		}
+		
+	}
 }

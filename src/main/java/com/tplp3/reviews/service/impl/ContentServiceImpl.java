@@ -50,5 +50,13 @@ public class ContentServiceImpl implements ContentService{
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void update(Content content, Long id) {
+		// TODO Auto-generated method stub
+		if(contentRepository.existsById(id)) {
+			contentRepository.save(content);
+		}
+		
+	}
 }
 

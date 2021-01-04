@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.tplp3.reviews.domain.Content;
 
+
 @Service
 public interface ContentService {
 	Content findById(Long id);
@@ -14,4 +15,6 @@ public interface ContentService {
 	void save(Content content);
 
 	void delete(Long id);
+	
+	void update(Content content,Long id);
 }

@@ -39,4 +39,9 @@ public class SpectatorController {
     	spectatorService.delete(id);
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody Spectator spec) {
+    	spec.setId(id);
+    	spectatorService.update(spec, id);
+    }
 }

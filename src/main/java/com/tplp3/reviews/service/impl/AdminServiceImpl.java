@@ -40,7 +40,6 @@ public class AdminServiceImpl implements AdminService{
 
 	@Override
 	public void save(Admin admin) {
-		// TODO Auto-generated method stub
 		adminRepository.save(admin);
 		
 	}
@@ -48,7 +47,13 @@ public class AdminServiceImpl implements AdminService{
 	@Override
 	public void delete(Long id) {
 			adminRepository.deleteById(id);
-		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(Admin admin, Long id) {
+		if(adminRepository.existsById(id)) {
+			adminRepository.save(admin);
+		}
 		
 	}
 }

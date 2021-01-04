@@ -38,5 +38,9 @@ public class CuponsController {
     public void delete(@PathVariable("id") Long id) {
     	cuponsService.delete(id);
     }
-
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody Cupons cupon) {
+    	cupon.setPromotionId(id);
+    	cuponsService.update(cupon, id);
+    }
 }

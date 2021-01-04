@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.domain.PreaccessPremiere;
+import com.tplp3.reviews.domain.UserPremium;
 import com.tplp3.reviews.service.PreaccessPremiereService;
 
 import com.tplp3.reviews.constant.ApiPath;	
@@ -39,6 +40,11 @@ public class PreaccessPremiereController {
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id) {
     	preaccessPremiereService.delete(id);
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody PreaccessPremiere preacces) {
+    	preacces.setPromotionId(id);
+    	preaccessPremiereService.update(preacces, id);
     }
 
 }

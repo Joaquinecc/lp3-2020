@@ -39,8 +39,6 @@ public class UserServiceImpl implements com.tplp3.reviews.service.UserService{
 
 	@Override
 	public void save(User user) {
-		// TODO Auto-generated method stub
-		user.setWhenWasCreated(new Date()); 
 		userRepository.save(user);
 		
 	}
@@ -51,5 +49,15 @@ public class UserServiceImpl implements com.tplp3.reviews.service.UserService{
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void update(User user, Long id) {
+		// TODO Auto-generated method stub
+		if(userRepository.existsById(id)) {
+			userRepository.save(user);
+		}
+		
+	}
+
 
 }

@@ -48,4 +48,12 @@ public class CuponsServiceImpl implements com.tplp3.reviews.service.CuponsServic
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void update(Cupons cupons, Long id) {
+		// TODO Auto-generated method stub
+		if(cuponsRepository.existsById(id)) {
+			cuponsRepository.save(cupons);
+		}
+		
+	}
 }

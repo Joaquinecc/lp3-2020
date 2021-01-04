@@ -49,4 +49,12 @@ public class CuradorServiceImpl implements com.tplp3.reviews.service.CuradorServ
 		// TODO Auto-generated method stub
 		
 	}
+	@Override
+	public void update(Curador curador, Long id) {
+		// TODO Auto-generated method stub
+		if(curadorRepository.existsById(id)) {
+			curadorRepository.save(curador);
+		}
+		
+	}
 }

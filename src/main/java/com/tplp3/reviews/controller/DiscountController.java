@@ -17,26 +17,31 @@ import com.tplp3.reviews.service.DiscountService;
 @RequestMapping(ApiPath.DISCOUNT)
 public class DiscountController {
 	@Autowired
-	private DiscountService adminService;
+	private DiscountService discountService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Discount greetings(@PathVariable("id") Long id) {
-    	Discount Admins = adminService.findById(id);
+    	Discount Admins = discountService.findById(id);
         return Admins;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Discount> list() {
-        return adminService.findAll();
+        return discountService.findAll();
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public void add(@RequestBody Discount discount) {
-    	adminService.save(discount);
+    	discountService.save(discount);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public void delete(@PathVariable("id") Long id) {
-    	adminService.delete(id);
+    	discountService.delete(id);
+    }
+    @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
+    public void update(@PathVariable("id") Long id,@RequestBody Discount discount) {
+    	discount.setPromotionId(id);
+    	discountService.update(discount, id);
     }
 
 }

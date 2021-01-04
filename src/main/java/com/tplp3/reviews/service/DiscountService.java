@@ -11,4 +11,5 @@ public interface DiscountService {
 
 	void delete(Long id);
 
+	void update(Discount discount,Long id);
 }

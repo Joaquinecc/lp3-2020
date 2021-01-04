@@ -10,6 +10,10 @@ import javax.persistence.GenerationType;
 
 @Entity
 public class Movie extends Content {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2695756956461186274L;
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	protected String[] directors;
@@ -17,7 +21,6 @@ public class Movie extends Content {
 	Movie(){}
 	public Movie(String category, String title,String[] Dir,String [] actors) {
 		super(category, title);
-		// TODO Auto-generated constructor stub
 	}
 	public String[] getDirectors() {
 		return directors;

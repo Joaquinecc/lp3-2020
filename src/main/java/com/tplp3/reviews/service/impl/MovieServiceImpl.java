@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tplp3.reviews.domain.Movie;
+import com.tplp3.reviews.domain.User;
 import com.tplp3.reviews.repository.MovieRepository;
 import com.tplp3.reviews.service.MovieService;
 
@@ -48,6 +49,14 @@ public class MovieServiceImpl implements MovieService{
 	public void delete(Long id) {
 			movieRepository.deleteById(id);
 		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void update(Movie movie, Long id) {
+		// TODO Auto-generated method stub
+		if(movieRepository.existsById(id)) {
+			movieRepository.save(movie);
+		}
 		
 	}
 }

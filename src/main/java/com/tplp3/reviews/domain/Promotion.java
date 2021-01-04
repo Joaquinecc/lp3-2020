@@ -15,13 +15,19 @@ public class Promotion {
 	protected String name;
 	protected String site;
 	protected boolean isvalid= false;
-	private static int counter;
+//	private static int counter;
 	Promotion (){}
 	public Promotion(String name, String site) {
 		super();
-		counter++;
+//		counter++;
 		this.name = name;
 		this.site = site;
+	}
+	public long getPromotionId() {
+		return promotionId;
+	}
+	public void setPromotionId(long promotionId) {
+		this.promotionId = promotionId;
 	}
 	public String getName() {
 		return name;
@@ -41,6 +47,6 @@ public class Promotion {
 	public void setIsvalid(boolean isvalid) {
 		this.isvalid = isvalid;
 	}
-	public static int getCounter() {return counter;}
+//	public static int getCounter() {return counter;}
 	
 }

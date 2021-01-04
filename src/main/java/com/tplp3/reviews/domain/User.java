@@ -10,33 +10,41 @@ import java.util.Date;
 @Entity
 public class User {
 	
+	public long getId() {
+		return id;
+	}
+	public void setId(long id) {
+		this.id = id;
+	}
+
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Id
 	protected long id;
 	protected String username;
 	protected String email;
 	protected String passw;
-	protected Date whenWasCreated;
+	protected Date CredentialDate;
 	
 
+	public Date getCredentialDate() {
+		return CredentialDate;
+	}
+	public void setCredentialDate(Date credentialDate) {
+		CredentialDate = credentialDate;
+	}
 	public User() {
-		this.whenWasCreated= new Date(); 
+		this.CredentialDate= new Date(); 
 	};
 	public User(String username, String email, String passw) {	
 		super();
-		this.whenWasCreated= new Date(); 
+		this.CredentialDate= new Date(); 
 		this.username = username;
 		this.email = email;
 		this.passw = passw;
 	}
 	
 	
-	public Date getWhenWasCreated() {
-		return whenWasCreated;
-	}
-	public void setWhenWasCreated(Date whenWasCreated) {
-		this.whenWasCreated = whenWasCreated;
-	}
+
 	public boolean login(String username,String passw) {
 		if(this.passw == passw && this.username == username)
 			return true;
