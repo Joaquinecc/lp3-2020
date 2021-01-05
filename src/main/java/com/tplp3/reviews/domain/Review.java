@@ -1,11 +1,8 @@
  package com.tplp3.reviews.domain;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 import java.io.Serializable ;
 
@@ -30,16 +27,27 @@ public class Review implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long reviewId;
+
+//	protected String site;
 	
-	
-//	private static int counter;
-	protected String site;
-//	@ManyToOne(cascade = {CascadeType.ALL})
-//	@JoinColumn(name="contentId")
-//	protected Content cont;
-//	@ManyToOne(cascade = {CascadeType.ALL})
-//	@JoinColumn(name="contentId")
 	protected Long content_id;
+	protected Long revEntity_id;
+	protected String nameRevEntity;
+	
+	
+
+	public String getNameRevEntity() {
+		return nameRevEntity;
+	}
+	public void setNameRevEntity(String nameRevEntity) {
+		this.nameRevEntity = nameRevEntity;
+	}
+	public Long getRevEntity_id() {
+		return revEntity_id;
+	}
+	public void setRevEntity_id(Long revEntity_id) {
+		this.revEntity_id = revEntity_id;
+	}
 	public Long getContent_id() {
 		return content_id;
 	}
@@ -48,25 +56,18 @@ public class Review implements Serializable{
 	}
 	protected float rating;
 	Review (){}
-	public Review(String site, Content cont, float rating) {
-		super();
-//		counter++;
-		this.site = site;
-//		this.cont = cont;
-		this.rating = rating;
-	}
-	public String getSite() {
-		return site;
-	}
-	public void setSite(String site) {
-		this.site = site;
-	}
-//	public Content getCont() {
-//		return cont;
+//	public Review(String site, Content cont, float rating) {
+//		super();
+//		this.site = site;
+//		this.rating = rating;
 //	}
-//	public void setCont(Content cont) {
-//		this.cont = cont;
+//	public String getSite() {
+//		return site;
 //	}
+//	public void setSite(String site) {
+//		this.site = site;
+//	}
+
 	public float getRating() {
 		return rating;
 	}

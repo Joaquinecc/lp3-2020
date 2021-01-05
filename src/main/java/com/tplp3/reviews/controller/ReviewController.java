@@ -22,7 +22,7 @@ public class ReviewController {
 	
     @RequestMapping(value = "/site/{site}", method = RequestMethod.GET)
     public List<Review> ListBySite(@PathVariable("site") String site) {
-    	 return reviewService.findBySite(site);
+    	 return reviewService.findByNameRevEntity(site);
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Review greetings(@PathVariable("id") Long id) {

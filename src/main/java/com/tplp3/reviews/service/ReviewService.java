@@ -8,7 +8,7 @@ public interface ReviewService {
 
 	List<Review> findAll();
 	
-	List<Review> findBySite(String site);
+	List<Review> findByNameRevEntity(String NameRevEntity);
 
 	void save(Review review);
 

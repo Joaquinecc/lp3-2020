@@ -16,7 +16,9 @@ public class Promotion {
 	protected String site;
 	protected boolean isvalid= false;
 //	private static int counter;
-	Promotion (){}
+	Promotion (){
+		this.isvalid=true;
+	}
 	public Promotion(String name, String site) {
 		super();
 //		counter++;
