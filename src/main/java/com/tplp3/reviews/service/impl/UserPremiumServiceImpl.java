@@ -88,6 +88,7 @@ public class UserPremiumServiceImpl implements com.tplp3.reviews.service.UserPre
 	public void update(UserPremium userPremium, Long id) throws IdNotFound  {
 		// TODO Auto-generated method stub
 		if(userPremiumRepository.existsById(id)) {
+			userPremium=addPromotion(userPremium);
 			userPremiumRepository.save(userPremium);
 		}else {
 			throw new IdNotFound("user");

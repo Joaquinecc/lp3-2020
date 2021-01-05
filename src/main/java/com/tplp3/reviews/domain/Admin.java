@@ -10,8 +10,8 @@ import javax.persistence.GenerationType;
 @Entity
 public class Admin extends User {
 //	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long IdAdmin;
+//	@GeneratedValue(strategy = GenerationType.AUTO)
+//	private long IdAdmin;
 	public Admin(){}
 	public Admin(String username, String email, String passw){
 		super( username,  email,  passw);

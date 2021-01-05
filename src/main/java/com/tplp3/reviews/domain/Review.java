@@ -34,16 +34,25 @@ public class Review implements Serializable{
 	
 //	private static int counter;
 	protected String site;
-	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="contentId")
-	protected Content cont;
+//	@ManyToOne(cascade = {CascadeType.ALL})
+//	@JoinColumn(name="contentId")
+//	protected Content cont;
+//	@ManyToOne(cascade = {CascadeType.ALL})
+//	@JoinColumn(name="contentId")
+	protected Long content_id;
+	public Long getContent_id() {
+		return content_id;
+	}
+	public void setContent_id(Long content_id) {
+		this.content_id = content_id;
+	}
 	protected float rating;
 	Review (){}
 	public Review(String site, Content cont, float rating) {
 		super();
 //		counter++;
 		this.site = site;
-		this.cont = cont;
+//		this.cont = cont;
 		this.rating = rating;
 	}
 	public String getSite() {
@@ -52,12 +61,12 @@ public class Review implements Serializable{
 	public void setSite(String site) {
 		this.site = site;
 	}
-	public Content getCont() {
-		return cont;
-	}
-	public void setCont(Content cont) {
-		this.cont = cont;
-	}
+//	public Content getCont() {
+//		return cont;
+//	}
+//	public void setCont(Content cont) {
+//		this.cont = cont;
+//	}
 	public float getRating() {
 		return rating;
 	}

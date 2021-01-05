@@ -46,11 +46,11 @@ public class UserPremium extends Spectator implements Serializable {
 		this.PromotionAvailable.add(prom);
 	}
 	public void usePromotion(int index) {}
-	public ArrayList<Promotion> getPromotionAvailable() {
-		return PromotionAvailable;
-	}
-	public void setPromotionAvailable(ArrayList<Promotion> promotionAvailable) {
-		PromotionAvailable = promotionAvailable;
-	}
+//	public ArrayList<Promotion> getPromotionAvailable() {
+//		return PromotionAvailable;
+//	}
+//	public void setPromotionAvailable(ArrayList<Promotion> promotionAvailable) {
+//		PromotionAvailable = promotionAvailable;
+//	}
 
 }
