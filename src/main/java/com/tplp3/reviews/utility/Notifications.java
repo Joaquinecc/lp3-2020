@@ -15,10 +15,9 @@ import com.tplp3.reviews.repository.UserRepository;
 public class Notifications {
 	@Autowired
 	private UserRepository userRepository;
-
     public  Date addDays(Date date, int days)
     {
-    	
+  
         Calendar cal = Calendar.getInstance();
         cal.setTime(date);
         cal.add(Calendar.DATE, days); //minus number would decrement the days

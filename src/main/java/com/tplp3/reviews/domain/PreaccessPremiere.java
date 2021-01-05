@@ -1,20 +1,24 @@
 package com.tplp3.reviews.domain;
 
+import java.io.Serializable;
 import java.sql.Date;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class PreaccessPremiere extends Promotion {
+public class PreaccessPremiere extends Promotion implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8525048488859268889L;
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	protected Date dateofPremiere;
 	//ForeingKey
-	@ManyToOne(cascade = {CascadeType.ALL},fetch = FetchType.LAZY)
+	@ManyToOne(cascade = {CascadeType.ALL})
 	protected Movie movie;
 
 	PreaccessPremiere(){}

@@ -30,12 +30,12 @@ public class ReviewServiceImpl implements ReviewService{
 
 	@Override
 	public List<Review> findAll() {
-		List<Review> users = new ArrayList<>();
+		List<Review> review = new ArrayList<>();
 		Iterator<Review> iterator = reviewRepository.findAll().iterator();
 		while (iterator.hasNext()) {
-			users.add(iterator.next());
+			review.add(iterator.next());
 		}
-		return users;
+		return review;
 	}
 
 	@Override
@@ -58,6 +58,16 @@ public class ReviewServiceImpl implements ReviewService{
 			reviewRepository.save(review);
 		}
 		
+	}
+
+	@Override
+	public List<Review> findBySite(String site) {
+		List<Review> review = new ArrayList<>();
+		Iterator<Review> iterator = reviewRepository.findBySite(site).iterator();
+		while (iterator.hasNext()) {
+			review.add(iterator.next());
+		}
+		return review;
 	}
 }
 

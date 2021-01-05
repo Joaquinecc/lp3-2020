@@ -7,16 +7,21 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
-import com.tplp3.reviews.domain.User;
+import com.tplp3.reviews.domain.Promotion;
 import com.tplp3.reviews.domain.UserPremium;
+import com.tplp3.reviews.exception.IdNotFound;
+import com.tplp3.reviews.repository.PromotionRepository;
 import com.tplp3.reviews.repository.UserPremiumRepository;
 
 import org.springframework.stereotype.Service; 
 
 @Service
 public class UserPremiumServiceImpl implements com.tplp3.reviews.service.UserPremiumService {
+	
 	@Autowired
 	private UserPremiumRepository userPremiumRepository;
+	@Autowired
+	private PromotionRepository promotionRepository;
 	@Override
 	public UserPremium findById(Long id) {
 		UserPremium userPremium=null;
@@ -36,10 +41,39 @@ public class UserPremiumServiceImpl implements com.tplp3.reviews.service.UserPre
 		}
 		return users;
 	}
-
+	private UserPremium addPromotion(UserPremium userPremium) {
+		Iterator<Long> iter=userPremium.getPromotionsId().iterator();
+		ArrayList<Promotion> promo= new ArrayList<Promotion>();
+		Promotion promotion=null;
+		Long id= (long) 10;
+		while(iter.hasNext()) {
+			id= (Long) iter.next();
+			Optional<Promotion> option= promotionRepository.findById(id);
+			System.out.println("\n\n "+id.toString()+"\n");
+		
+			if (option.isPresent()) {
+				
+				promotion = option.get();
+				System.out.println(promotion+"\n");
+				promo.add(promotion);
+				promotion=null;
+			}else {
+				System.out.println("Id not found "+id.toString()+"\n");
+				iter.remove();
+			}
+			
+		}
+//		userPremium.setPromotionAvailable(promo);
+//		System.out.println("\n\n\n Sali  \n\n");
+//		System.out.println(promo);
+//		System.out.println(userPremium);
+		
+		return userPremium;
+	}
 	@Override
 	public void save(UserPremium userPremium) {
-		// TODO Auto-generated method stub
+		userPremium=addPromotion(userPremium);
+		
 		userPremiumRepository.save(userPremium);
 		
 	}
@@ -51,10 +85,12 @@ public class UserPremiumServiceImpl implements com.tplp3.reviews.service.UserPre
 		
 	}
 	@Override
-	public void update(UserPremium userPremium, Long id) {
+	public void update(UserPremium userPremium, Long id) throws IdNotFound  {
 		// TODO Auto-generated method stub
 		if(userPremiumRepository.existsById(id)) {
 			userPremiumRepository.save(userPremium);
+		}else {
+			throw new IdNotFound("user");
 		}
 		
 	}

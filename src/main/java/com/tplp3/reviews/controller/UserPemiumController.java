@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.tplp3.reviews.domain.UserPremium;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.UserPremiumService;
 import com.tplp3.reviews.constant.ApiPath;	
 
@@ -40,9 +41,16 @@ public class UserPemiumController {
     	userPremiumService.delete(id);
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public void update(@PathVariable("id") Long id,@RequestBody UserPremium userp) {
+    public void update(@PathVariable("id") Long id,@RequestBody UserPremium userp) throws IdNotFound {
     	userp.setId(id);
-    	userPremiumService.update(userp, id);
+    	try {
+
+        	userPremiumService.update(userp, id);
+    	} catch (IdNotFound e ) {
+    		System.out
+			.println("No existe el usuario");
+    		
+    	}
     }
 
 }

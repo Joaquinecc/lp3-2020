@@ -19,6 +19,11 @@ import com.tplp3.reviews.constant.ApiPath;
 public class ReviewController {
 	@Autowired
 	private ReviewService reviewService;
+	
+    @RequestMapping(value = "/site/{site}", method = RequestMethod.GET)
+    public List<Review> ListBySite(@PathVariable("site") String site) {
+    	 return reviewService.findBySite(site);
+    }
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Review greetings(@PathVariable("id") Long id) {
     	Review Admins = reviewService.findById(id);
@@ -44,6 +49,7 @@ public class ReviewController {
     	review.setReviewId(id);
     	reviewService.update(review, id);
     }
+
 
 }
 
