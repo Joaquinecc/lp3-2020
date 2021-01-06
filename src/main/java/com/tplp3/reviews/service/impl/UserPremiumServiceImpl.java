@@ -23,11 +23,13 @@ public class UserPremiumServiceImpl implements com.tplp3.reviews.service.UserPre
 	@Autowired
 	private PromotionRepository promotionRepository;
 	@Override
-	public UserPremium findById(Long id) {
+	public UserPremium findById(Long id) throws IdNotFound{
 		UserPremium userPremium=null;
 		Optional<UserPremium> option= userPremiumRepository.findById(id);
 		if (option.isPresent()) {
 			userPremium = option.get();
+		}else {
+			throw new IdNotFound("User Premium");
 		}
 		return userPremium;
 	}
@@ -91,7 +93,7 @@ public class UserPremiumServiceImpl implements com.tplp3.reviews.service.UserPre
 			userPremium=addPromotion(userPremium);
 			userPremiumRepository.save(userPremium);
 		}else {
-			throw new IdNotFound("user");
+			throw new IdNotFound("User Premium");
 		}
 		
 	}

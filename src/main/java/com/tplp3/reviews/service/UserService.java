@@ -8,7 +8,7 @@ import com.tplp3.reviews.exception.IdNotFound;
 
 @Service
 public interface UserService {
-	User findById(Long id);
+	User findById(Long id) throws IdNotFound;
 
 	List<User> findAll();
 

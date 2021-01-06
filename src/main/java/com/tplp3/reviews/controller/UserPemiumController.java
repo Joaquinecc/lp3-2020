@@ -22,8 +22,16 @@ public class UserPemiumController {
 	private UserPremiumService userPremiumService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public UserPremium greetings(@PathVariable("id") Long id) {
-    	UserPremium Admins = userPremiumService.findById(id);
-        return Admins;
+    	try {
+    		UserPremium userPremium = userPremiumService.findById(id);
+            return userPremium;
+    		
+    	} catch (IdNotFound e ) {
+    		System.out
+			.println("No existe el usuario Premium");
+    		return null;
+    	}
+    
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

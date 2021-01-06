@@ -18,11 +18,13 @@ public class UserServiceImpl implements com.tplp3.reviews.service.UserService{
 	@Autowired
 	private UserRepository userRepository;
 	@Override
-	public User findById(Long id) {
+	public User findById(Long id) throws IdNotFound {
 		User user=null;
 		Optional<User> option= userRepository.findById(id);
 		if (option.isPresent()) {
 			user = option.get();
+		}else {
+			throw new IdNotFound("user");
 		}
 		return user;
 	}

@@ -23,8 +23,14 @@ public class UserController {
 	private UserService userService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public User greetings(@PathVariable("id") Long id) {
-    	User users = userService.findById(id);
-        return users;
+    	try {
+    		User users = userService.findById(id);
+            return users;
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No existe el usuario");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)

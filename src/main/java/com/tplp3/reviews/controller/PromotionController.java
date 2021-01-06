@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.constant.ApiPath;
 import com.tplp3.reviews.domain.Promotion;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.domain.Promotion;
 import com.tplp3.reviews.service.PromotionService;
 
@@ -22,8 +23,14 @@ public class PromotionController {
 	private PromotionService promotionService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Promotion greetings(@PathVariable("id") Long id) {
-    	Promotion Admins = promotionService.findById(id);
-        return Admins;
+    	try {
+    		Promotion Admins = promotionService.findById(id);
+            return Admins;
+    	}catch (IdNotFound e ) {
+    		System.out
+			.println("No se encontr la promocion id");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -42,7 +49,13 @@ public class PromotionController {
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody Promotion promotion) {
+    	try {
     	promotion.setPromotionId(id);
     	promotionService.update(promotion, id);
-    }
+    	}catch (IdNotFound e ) {
+    		System.out
+			.println("No se encontr la promocion id");
+    		
+    	}
+	}
 }
