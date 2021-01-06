@@ -1,7 +1,6 @@
 package com.tplp3.reviews.service.impl;
 
 import com.tplp3.reviews.domain.Promotion;
-import com.tplp3.reviews.domain.User;
 import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.PromotionRepository;
 import java.util.ArrayList;

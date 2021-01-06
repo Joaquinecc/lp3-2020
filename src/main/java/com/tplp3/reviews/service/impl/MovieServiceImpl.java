@@ -8,7 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tplp3.reviews.domain.Movie;
-import com.tplp3.reviews.domain.User;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.MovieRepository;
 import com.tplp3.reviews.service.MovieService;
 
@@ -19,11 +19,13 @@ public class MovieServiceImpl implements MovieService{
 	@Autowired
 	private MovieRepository movieRepository;
 	@Override
-	public Movie findById(Long id) {
+	public Movie findById(Long id) throws IdNotFound {
 		Movie movie=null;
 		Optional<Movie> option= movieRepository.findById(id);
 		if (option.isPresent()) {
 			movie = option.get();
+		}else {
+			throw new IdNotFound("Movie");
 		}
 		return movie;
 	}
@@ -52,10 +54,12 @@ public class MovieServiceImpl implements MovieService{
 		
 	}
 	@Override
-	public void update(Movie movie, Long id) {
+	public void update(Movie movie, Long id) throws IdNotFound {
 		// TODO Auto-generated method stub
 		if(movieRepository.existsById(id)) {
 			movieRepository.save(movie);
+		}else {
+			throw new IdNotFound("Movie");
 		}
 		
 	}

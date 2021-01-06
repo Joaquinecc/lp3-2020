@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.domain.ReviewEntity;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.ReviewEntityService;
 import com.tplp3.reviews.constant.ApiPath;	
 
@@ -20,8 +21,14 @@ public class ReviewEntityController{
 	private ReviewEntityService reviewEntityService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ReviewEntity greetings(@PathVariable("id") Long id) {
+    	try {
     	ReviewEntity rev = reviewEntityService.findById(id);
         return rev;
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del ReviewEntity");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -41,7 +48,13 @@ public class ReviewEntityController{
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody ReviewEntity rev) {
+    	try {
     	rev.setEntityReview_id(id);
     	reviewEntityService.update(rev, id);
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del ReviewEntity");
+    		
+    	}
     }
 }

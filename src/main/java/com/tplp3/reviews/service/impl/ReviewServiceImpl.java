@@ -10,7 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.tplp3.reviews.domain.Content;
 import com.tplp3.reviews.domain.Review;
 import com.tplp3.reviews.domain.ReviewEntity;
-import com.tplp3.reviews.domain.User;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.ContentRepository;
 import com.tplp3.reviews.repository.ReviewEntityRepository;
 import com.tplp3.reviews.repository.ReviewRepository;
@@ -28,11 +28,13 @@ public class ReviewServiceImpl implements ReviewService{
 	private ReviewEntityRepository reviewEntityRepository;
 	
 	@Override
-	public Review findById(Long id) {
+	public Review findById(Long id) throws IdNotFound {
 		Review review=null;
 		Optional<Review> option= reviewRepository.findById(id);
 		if (option.isPresent()) {
 			review = option.get();
+		}else {
+			throw new IdNotFound("Review");
 		}
 		return review;
 	}
@@ -84,12 +86,14 @@ public class ReviewServiceImpl implements ReviewService{
 		
 	}
 	@Override
-	public void update(Review review, Long id) {
+	public void update(Review review, Long id) throws IdNotFound {
 		// TODO Auto-generated method stub
 		if(reviewRepository.existsById(id)) {
 			CheckReviewEntity(review);
 				CheckIdContent(review);
 			reviewRepository.save(review);
+		}else {
+			throw new IdNotFound("Review");
 		}
 		
 	}

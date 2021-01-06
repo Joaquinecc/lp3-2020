@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.domain.Spectator;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.SpectatorService;
 import com.tplp3.reviews.constant.ApiPath;	
 
@@ -20,8 +21,14 @@ public class SpectatorController {
 	private SpectatorService spectatorService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Spectator greetings(@PathVariable("id") Long id) {
+    	try {
     	Spectator spec = spectatorService.findById(id);
         return spec;
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No existe el Espectador");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -41,7 +48,13 @@ public class SpectatorController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody Spectator spec) {
+    	try {
     	spec.setId(id);
     	spectatorService.update(spec, id);
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No existe el Espectador");
+    	
+    	}
     }
 }

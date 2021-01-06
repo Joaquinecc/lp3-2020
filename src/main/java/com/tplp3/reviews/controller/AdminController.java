@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.domain.Admin;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.AdminService;
 import com.tplp3.reviews.constant.ApiPath;	
 
@@ -20,8 +21,15 @@ public class AdminController {
 	private AdminService adminService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Admin greetings(@PathVariable("id") Long id) {
-    	Admin Admins = adminService.findById(id);
-        return Admins;
+    	try {
+
+        	Admin Admins = adminService.findById(id);
+            return Admins;
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Admin");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -40,8 +48,15 @@ public class AdminController {
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody Admin admin) {
-    	admin.setId(id);
-    	adminService.update(admin, id);
+    	try{
+    		admin.setId(id);
+    		adminService.update(admin, id);
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Admin");
+
+    	}
+    	
     }
 
 }

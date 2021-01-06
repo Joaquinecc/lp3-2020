@@ -4,9 +4,10 @@ import java.util.List;
 
 
 import com.tplp3.reviews.domain.PreaccessPremiere;
+import com.tplp3.reviews.exception.IdNotFound;
 
 public interface PreaccessPremiereService {
-	PreaccessPremiere findById(Long id);
+	PreaccessPremiere findById(Long id) throws IdNotFound;
 
 	List<PreaccessPremiere> findAll();
 
@@ -14,6 +15,6 @@ public interface PreaccessPremiereService {
 
 	void delete(Long id);
 	
-	void update(PreaccessPremiere pre,Long id);
+	void update(PreaccessPremiere pre,Long id) throws IdNotFound; 
 
 }

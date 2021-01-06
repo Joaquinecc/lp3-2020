@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.domain.Curador;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.CuradorService;
 import com.tplp3.reviews.constant.ApiPath;	
 
@@ -20,8 +21,14 @@ public class CuradorController {
 	private CuradorService curadorservice;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Curador greetings(@PathVariable("id") Long id) {
+    	try {
     	Curador Admins = curadorservice.findById(id);
         return Admins;
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Curador");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -40,8 +47,14 @@ public class CuradorController {
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody Curador curador) {
+    	try {
     	curador.setId(id);
     	curadorservice.update(curador, id);
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Curador");
+    		
+    	}
     }
 
 

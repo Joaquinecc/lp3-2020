@@ -2,6 +2,7 @@ package com.tplp3.reviews.service.impl;
 
 
 import com.tplp3.reviews.domain.Cupons;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.CuponsRepository;
 import java.util.ArrayList;
 
@@ -16,12 +17,15 @@ public class CuponsServiceImpl implements com.tplp3.reviews.service.CuponsServic
 	@Autowired
 	private CuponsRepository cuponsRepository;
 	@Override
-	public Cupons findById(Long id) {
+	public Cupons findById(Long id) throws IdNotFound {
 		Cupons cupons=null;
 		Optional<Cupons> option= cuponsRepository.findById(id);
 		if (option.isPresent()) {
 			cupons = option.get();
+		}else {
+			throw new IdNotFound("Cupon");
 		}
+		
 		return cupons;
 	}
 
@@ -49,11 +53,14 @@ public class CuponsServiceImpl implements com.tplp3.reviews.service.CuponsServic
 		
 	}
 	@Override
-	public void update(Cupons cupons, Long id) {
+	public void update(Cupons cupons, Long id) throws IdNotFound {
 		// TODO Auto-generated method stub
 		if(cuponsRepository.existsById(id)) {
 			cuponsRepository.save(cupons);
+		}else {
+			throw new IdNotFound("Cupon");
 		}
+		
 		
 	}
 }

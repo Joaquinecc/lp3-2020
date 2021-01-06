@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tplp3.reviews.domain.Content;
 import com.tplp3.reviews.domain.Curador;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.ContentRepository;
 import com.tplp3.reviews.repository.CuradorRepository;
 
@@ -21,12 +22,15 @@ public class CuradorServiceImpl implements com.tplp3.reviews.service.CuradorServ
 	@Autowired
 	private ContentRepository contentRepository;
 	@Override
-	public Curador findById(Long id) {
+	public Curador findById(Long id) throws IdNotFound {
 		Curador curador=null;
 		Optional<Curador> option= curadorRepository.findById(id);
 		if (option.isPresent()) {
 			curador = option.get();
+		}else {
+			throw new IdNotFound("Curador");
 		}
+		
 		return curador;
 	}
 
@@ -80,11 +84,13 @@ public class CuradorServiceImpl implements com.tplp3.reviews.service.CuradorServ
 		
 	}
 	@Override
-	public void update(Curador curador, Long id) {
+	public void update(Curador curador, Long id) throws IdNotFound {
 		// TODO Auto-generated method stub
 		if(curadorRepository.existsById(id)) {
 			checkContentISValid(curador);
 			curadorRepository.save(curador);
+		}else {
+			throw new IdNotFound("Curador");
 		}
 		
 	}

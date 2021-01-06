@@ -1,6 +1,7 @@
 package com.tplp3.reviews.service.impl;
 
 import com.tplp3.reviews.domain.Discount;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.DiscountRepository;
 import java.util.ArrayList;
 
@@ -15,11 +16,13 @@ public class DiscountServiceImpl implements com.tplp3.reviews.service.DiscountSe
 	@Autowired
 	private DiscountRepository discountRepository;
 	@Override
-	public Discount findById(Long id) {
+	public Discount findById(Long id) throws IdNotFound {
 		Discount discount=null;
 		Optional<Discount> option= discountRepository.findById(id);
 		if (option.isPresent()) {
 			discount = option.get();
+		}else {
+			throw new IdNotFound("Discount");
 		}
 		return discount;
 	}
@@ -49,11 +52,13 @@ public class DiscountServiceImpl implements com.tplp3.reviews.service.DiscountSe
 	}
 	
 	@Override
-	public void update(Discount discount, Long id) {
+	public void update(Discount discount, Long id) throws IdNotFound {
 		// TODO Auto-generated method stub
 		if(discountRepository.existsById(id)) {
 			discountRepository.save(discount);
 		}
-		
+		else {
+			throw new IdNotFound("Discount");
+		}
 	}
 }

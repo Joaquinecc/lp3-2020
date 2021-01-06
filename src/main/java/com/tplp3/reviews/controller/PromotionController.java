@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tplp3.reviews.constant.ApiPath;
 import com.tplp3.reviews.domain.Promotion;
 import com.tplp3.reviews.exception.IdNotFound;
-import com.tplp3.reviews.domain.Promotion;
 import com.tplp3.reviews.service.PromotionService;
 
 @RestController

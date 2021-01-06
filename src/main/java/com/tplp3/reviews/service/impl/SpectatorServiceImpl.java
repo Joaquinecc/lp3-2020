@@ -9,7 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tplp3.reviews.domain.Spectator;
-import com.tplp3.reviews.domain.User;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.SpectatorRepository;
 
 import org.springframework.stereotype.Service; 
@@ -19,11 +19,13 @@ public class SpectatorServiceImpl implements com.tplp3.reviews.service.Spectator
 	@Autowired
 	private SpectatorRepository spectatorRepository;
 	@Override
-	public Spectator findById(Long id) {
+	public Spectator findById(Long id) throws IdNotFound {
 		Spectator spectator=null;
 		Optional<Spectator> option= spectatorRepository.findById(id);
 		if (option.isPresent()) {
 			spectator = option.get();
+		}else {
+			throw new IdNotFound("Spectator");
 		}
 		return spectator;
 	}
@@ -52,10 +54,12 @@ public class SpectatorServiceImpl implements com.tplp3.reviews.service.Spectator
 		
 	}
 	@Override
-	public void update(Spectator spectator, Long id) {
+	public void update(Spectator spectator, Long id) throws IdNotFound {
 		// TODO Auto-generated method stub
 		if(spectatorRepository.existsById(id)) {
 			spectatorRepository.save(spectator);
+		}else {
+			throw new IdNotFound("Spectator");
 		}
 		
 	}

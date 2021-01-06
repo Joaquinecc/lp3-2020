@@ -8,6 +8,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tplp3.reviews.domain.Content;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.ContentRepository;
 import com.tplp3.reviews.service.ContentService;
 
@@ -18,12 +19,15 @@ public class ContentServiceImpl implements ContentService{
 	@Autowired
 	private ContentRepository contentRepository;
 	@Override
-	public Content findById(Long id) {
+	public Content findById(Long id) throws IdNotFound{
 		Content content=null;
 		Optional<Content> option= contentRepository.findById(id);
 		if (option.isPresent()) {
 			content = option.get();
+		}else {
+			throw new IdNotFound("Content");
 		}
+		
 		return content;
 	}
 
@@ -51,10 +55,12 @@ public class ContentServiceImpl implements ContentService{
 		
 	}
 	@Override
-	public void update(Content content, Long id) {
+	public void update(Content content, Long id) throws IdNotFound{
 		// TODO Auto-generated method stub
 		if(contentRepository.existsById(id)) {
 			contentRepository.save(content);
+		}else {
+			throw new IdNotFound("Content");
 		}
 		
 	}

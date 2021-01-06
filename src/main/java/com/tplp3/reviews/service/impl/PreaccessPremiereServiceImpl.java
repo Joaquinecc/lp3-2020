@@ -1,7 +1,7 @@
 package com.tplp3.reviews.service.impl;
 
 import com.tplp3.reviews.domain.PreaccessPremiere;
-import com.tplp3.reviews.domain.User;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.PreaccessPremiereRepository;
 import java.util.ArrayList;
 
@@ -16,11 +16,13 @@ public class PreaccessPremiereServiceImpl implements com.tplp3.reviews.service.P
 	@Autowired
 	private PreaccessPremiereRepository preaccessPremiereRepository;
 	@Override
-	public PreaccessPremiere findById(Long id) {
+	public PreaccessPremiere findById(Long id) throws IdNotFound {
 		PreaccessPremiere preaccessPremiere=null;
 		Optional<PreaccessPremiere> option= preaccessPremiereRepository.findById(id);
 		if (option.isPresent()) {
 			preaccessPremiere = option.get();
+		}else {
+			throw new IdNotFound("PreaccessPremiere");
 		}
 		return preaccessPremiere;
 	}
@@ -50,10 +52,12 @@ public class PreaccessPremiereServiceImpl implements com.tplp3.reviews.service.P
 		
 	}
 	@Override
-	public void update(PreaccessPremiere preaccessPremiere, Long id) {
+	public void update(PreaccessPremiere preaccessPremiere, Long id) throws IdNotFound {
 		// TODO Auto-generated method stub
 		if(preaccessPremiereRepository.existsById(id)) {
 			preaccessPremiereRepository.save(preaccessPremiere);
+		}else {
+			throw new IdNotFound("PreaccessPremiere");
 		}
 		
 	}

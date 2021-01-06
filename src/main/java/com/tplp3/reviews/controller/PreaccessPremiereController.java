@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.domain.PreaccessPremiere;
-import com.tplp3.reviews.domain.UserPremium;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.PreaccessPremiereService;
 
 import com.tplp3.reviews.constant.ApiPath;	
@@ -23,8 +23,14 @@ public class PreaccessPremiereController {
 	private PreaccessPremiereService preaccessPremiereService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public PreaccessPremiere greetings(@PathVariable("id") Long id) {
+    	try {
     	PreaccessPremiere Admins = preaccessPremiereService.findById(id);
         return Admins;
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Preestreno");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -43,8 +49,14 @@ public class PreaccessPremiereController {
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody PreaccessPremiere preacces) {
+    	try {
     	preacces.setPromotionId(id);
     	preaccessPremiereService.update(preacces, id);
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Preestreno");
+    	
+    	}
     }
 
 }

@@ -9,6 +9,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.tplp3.reviews.domain.Admin;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.AdminRepository;
 import com.tplp3.reviews.service.AdminService;
 
@@ -19,11 +20,13 @@ public class AdminServiceImpl implements AdminService{
 	@Autowired
 	private AdminRepository adminRepository;
 	@Override
-	public Admin findById(Long id) {
+	public Admin findById(Long id) throws IdNotFound{
 		Admin admin=null;
 		Optional<Admin> option= adminRepository.findById(id);
 		if (option.isPresent()) {
 			admin = option.get();
+		}else {
+			throw new IdNotFound("Admin");
 		}
 		return admin;
 	}
@@ -50,9 +53,11 @@ public class AdminServiceImpl implements AdminService{
 		
 	}
 	@Override
-	public void update(Admin admin, Long id) {
+	public void update(Admin admin, Long id) throws IdNotFound {
 		if(adminRepository.existsById(id)) {
 			adminRepository.save(admin);
+		}else {
+			throw new IdNotFound("Admin");
 		}
 		
 	}

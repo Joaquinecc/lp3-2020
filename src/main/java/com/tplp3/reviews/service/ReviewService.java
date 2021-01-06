@@ -2,9 +2,9 @@ package com.tplp3.reviews.service;
 import java.util.List;
 
 import com.tplp3.reviews.domain.Review;
-import com.tplp3.reviews.domain.User;
+import com.tplp3.reviews.exception.IdNotFound;
 public interface ReviewService {
-	Review findById(Long id);
+	Review findById(Long id) throws IdNotFound;
 
 	List<Review> findAll();
 	
@@ -14,5 +14,5 @@ public interface ReviewService {
 
 	void delete(Long id);
 	
-	void update(Review review,Long id);
-}
+	void update(Review review,Long id) throws IdNotFound;
+} 

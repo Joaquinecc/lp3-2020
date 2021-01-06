@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.tplp3.reviews.domain.ReviewEntity;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.repository.ReviewEntityRepository;
 import com.tplp3.reviews.service.ReviewEntityService;
 
@@ -17,11 +18,13 @@ public class ReviewEntityServiceImpl implements ReviewEntityService{
 	@Autowired
 	private ReviewEntityRepository reviewEntityRepository;
 	@Override
-	public ReviewEntity findById(Long id) {
+	public ReviewEntity findById(Long id) throws IdNotFound {
 		ReviewEntity reviewEntity=null;
 		Optional<ReviewEntity> option= reviewEntityRepository.findById(id);
 		if (option.isPresent()) {
 			reviewEntity = option.get();
+		}else {
+			throw new IdNotFound("ReviewEntity");
 		}
 		return reviewEntity;
 	}
@@ -48,9 +51,11 @@ public class ReviewEntityServiceImpl implements ReviewEntityService{
 		
 	}
 	@Override
-	public void update(ReviewEntity reviewEntity, Long id) {
+	public void update(ReviewEntity reviewEntity, Long id) throws IdNotFound {
 		if(reviewEntityRepository.existsById(id)) {
 			reviewEntityRepository.save(reviewEntity);
+		}else {
+			throw new IdNotFound("ReviewEntity");
 		}
 		
 	}

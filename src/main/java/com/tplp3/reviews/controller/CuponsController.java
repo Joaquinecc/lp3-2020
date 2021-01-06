@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.domain.Cupons;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.CuponsService;
 import com.tplp3.reviews.constant.ApiPath;	
 
@@ -20,9 +21,15 @@ public class CuponsController {
 	private CuponsService cuponsService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Cupons greetings(@PathVariable("id") Long id) {
+    	try {
     	Cupons Admins = cuponsService.findById(id);
         return Admins;
-    }
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Cupon");
+    		return null;
+    	}
+	}
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public List<Cupons> list() {
@@ -40,7 +47,14 @@ public class CuponsController {
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody Cupons cupon) {
-    	cupon.setPromotionId(id);
+    	
+    	try
+    	{cupon.setPromotionId(id);
     	cuponsService.update(cupon, id);
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Cupon");
+    	
+    	}
     }
 }

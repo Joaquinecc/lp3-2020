@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 import com.tplp3.reviews.domain.Movie;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.MovieService;
 import com.tplp3.reviews.constant.ApiPath;	
 
@@ -23,8 +24,14 @@ public class MovieController{
 	
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Movie greetings(@PathVariable("id") Long id) {
+    	try {
     	Movie users = movieService.findById(id);
         return users;
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id de la Movie");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -43,8 +50,14 @@ public class MovieController{
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody Movie movie) {
+    	try {
     	movie.setContentId(id);
     	movieService.update(movie, id);
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id de la Movie");
+    		
+    	}
     }
 }
 

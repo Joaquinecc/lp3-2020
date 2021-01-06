@@ -4,11 +4,12 @@ import java.util.List;
 
 
 import com.tplp3.reviews.domain.Movie;
+import com.tplp3.reviews.exception.IdNotFound;
 
 
 
 public interface MovieService {
-	Movie findById(Long id);
+	Movie findById(Long id) throws IdNotFound;
 
 	List<Movie> findAll();
 
@@ -16,6 +17,6 @@ public interface MovieService {
 
 	void delete(Long id);
 	 
-	void update(Movie movie,Long id);
+	void update(Movie movie,Long id) throws IdNotFound;
 
 }

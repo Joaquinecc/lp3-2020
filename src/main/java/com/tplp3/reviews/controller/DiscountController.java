@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tplp3.reviews.constant.ApiPath;
 import com.tplp3.reviews.domain.Discount;
+import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.DiscountService;
 
 @RestController
@@ -20,8 +21,14 @@ public class DiscountController {
 	private DiscountService discountService;
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public Discount greetings(@PathVariable("id") Long id) {
+    	try {
     	Discount Admins = discountService.findById(id);
         return Admins;
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Descuento");
+    		return null;
+    	}
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
@@ -40,8 +47,14 @@ public class DiscountController {
     }
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public void update(@PathVariable("id") Long id,@RequestBody Discount discount) {
+    	try {
     	discount.setPromotionId(id);
     	discountService.update(discount, id);
+    	}catch(IdNotFound e) {
+    		System.out
+			.println("No se encontro Id del Descuento");
+    	
+    	}
     }
 
 }

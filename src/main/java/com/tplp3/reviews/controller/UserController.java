@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.tplp3.reviews.domain.User;
 import com.tplp3.reviews.exception.IdNotFound;
 import com.tplp3.reviews.service.UserService;
-import com.tplp3.reviews.utility.Notifications;
 import com.tplp3.reviews.constant.ApiPath;	
 
 
