@@ -11,8 +11,16 @@ import javax.persistence.GenerationType;
 
 @Entity
 public class Spectator extends User {
-//	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.AUTO)
 //	public ArrayList<Review>  history;
+	public ArrayList<Long>  historialReviewId;
+	
+	public ArrayList<Long> getHistorialReviewId() {
+		return historialReviewId;
+	}
+	public void setHistorialReviewId(ArrayList<Long> historialReviewId) {
+		this.historialReviewId = historialReviewId;
+	}
 	Spectator(){}
 	Spectator(String username, String email, String passw) {
 		super(username, email, passw);
