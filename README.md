@@ -16,15 +16,16 @@ String passw;
 Extends from user
 
 #### post /admin
-#### put /admin/id
-#### delete /admin/id
+#### put /admin/{id_user}
+#### delete /admin/{id_user}
 #### get /admin
 #### get by id /admin/{id_user}
+
 ### Curador
 
 #### post /curador
-#### put /curador/id
-#### delete /curador/id
+#### put /curador/{id_user}
+#### delete /curador/{id_user}
 #### get /curador
 #### get by id /curador/{id_user}
 
@@ -33,9 +34,9 @@ Extends from user <br/>
 Campos: ArrayList <Long> PromotionsId.  Listas de id de las promociones asignada al usuario premium
 
 #### post /user_premium
-#### put /user_premium/id
-#### delete /user_premium/id
-#### delete /user_premium/id
+#### put /user_premium/{id_user}
+#### delete /user_premium/{id_user}
+#### delete /user_premium/{id_user}
 #### get /user_premium
 #### get by id /user_premium/{id_user}
 
@@ -43,8 +44,8 @@ Campos: ArrayList <Long> PromotionsId.  Listas de id de las promociones asignada
 Extends from user <br/>
 
 #### post /spectator
-#### put /spectator/id
-#### delete /spectator/id
+#### put /spectator/{id_user}
+#### delete /spectator/{id_user}
 #### get /spectator
 #### get by id /spectator/{id_user}
 
@@ -52,21 +53,33 @@ Extends from user <br/>
 Campos 	protected String site;	protected String Name;
 
 #### post /entityReview
-#### put /entityReview/id
-#### delete /entityReview/id
+#### put /entityReview/{id}
+#### delete /entityReview/{id}
 #### get /entityReview
 #### get by id /entityReview/{id}
 
 ### Movie
+Campos:
+String category;
+String title;
+
+
+#### post /content
+#### put /content/{content_id}
+#### delete /content/{content_id}
+#### get /content
+#### get by id /content/{content_id}
+
+### Movie
 Extend from content
 Campos:
-protected String[] directors;
-	protected String [] Actors;
+String[] directors;
+String [] Actors;
 
 
 #### post /movie
 #### put /movie/{content_id}
-### delete /movie/{content_id}
+#### delete /movie/{content_id}
 #### get /movie
 #### get by id /movie/{content_id}
 
@@ -76,7 +89,7 @@ campos :	protected Long content_id;
 	protected Long revEntity_id;
 #### post /review
 #### put /review/id
-### delete /review/id
+#### delete /review/id
 #### get /review
 #### get by id /review/{id}
 #### get by ReviewEntity /review/site/{reviewName}
@@ -88,20 +101,20 @@ campos:	protected String name;
 	protected boolean isvalid
 
 #### post /promotion
-#### put /promotion/id
-### delete /promotion/id
+#### put /promotion/{promotion_id}
+#### delete /promotion/{promotion_id}
 #### get /promotion
-#### get by id /promotion/{id}
+#### get by id /promotion/{promotion_id}
 
 ### Cupons
 Extended from Promotion <br/>
 campos:int Qavailable;
 
 #### post /cupons
-#### put /cupons/id
-### delete /cupons/id
+#### put /cupons/{promotion_id}
+#### delete /cupons/{promotion_id}
 #### get /cupons
-#### get by id /cupons/{id}
+#### get by id /cupons/{promotion_id}
 
 
 ### Discount
@@ -109,20 +122,20 @@ Extended from Promotion <br/>
 campos: float discount;
 
 #### post /discount
-#### put /discount/id
-### delete /discount/id
+#### put /discount/{promotion_id}
+#### delete /discount/{promotion_id}
 #### get /discount
-#### get by id /discount/{id}
+#### get by id /discount/{promotion_id}
 
 ### Preaccess
 Extended from Promotion <br/>
 Campos:Date dateofPremiere; Movie movie;
   
 #### post /preaccess
-#### put /preaccess/id
-### delete /preaccess/id
+#### put /preaccess/{promotion_id}
+#### delete /preaccess/{promotion_id}
 #### get /preaccess
-#### get by id /preaccess/{id}
+#### get by id /preaccess/{promotion_id}
 
 
 
