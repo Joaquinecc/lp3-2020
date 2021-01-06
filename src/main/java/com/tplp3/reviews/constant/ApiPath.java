@@ -15,5 +15,6 @@ public class ApiPath {
 	public static final String MOVIE = BASE_API + "/movie";
 	public static final String NOTIFY = BASE_API + "/notify";
 	public static final String ENTITY_REVIEW = BASE_API + "/entityReview";
+	public static final String CONTENT = BASE_API + "/content";
 
 }
