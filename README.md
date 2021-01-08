@@ -13,7 +13,7 @@ passw:String<br/>
 #### get by id /user/{id_user}
  <br/> <br/>
 ### Admin
-Extends from user
+Extends from user <br/>
  <br/>
 #### post /admin
 #### put /admin/{id_user}
@@ -44,7 +44,7 @@ promotionsId:Array[Long] .  Listas de id de las promociones asignada al usuario 
  <br/> <br/>
 ### Spectator
 Extends from user <br/>
-"historialReviewId":Array[Long] // Id de los reviews que consumio el espectador <br/>
+historialReviewId : Array[Long] ---> Id de los reviews que consumio el espectador <br/>
  <br/>
 #### post /spectator
 #### put /spectator/{id_user}
@@ -80,19 +80,19 @@ Extend from content
 Campos:<br/>
 directors: array(string )<br/>
 Actors:array(string )<br/>
-
  <br/>
-#### post /movie
-#### put /movie/{content_id}
-#### delete /movie/{content_id}
-#### get /movie
-#### get by id /movie/{content_id}
+ 
+####post /movie
+####put /movie/{content_id}
+####delete /movie/{content_id}
+####get /movie
+####get by id /movie/{content_id}
 
  <br/> <br/>
 ### Review 
 Campos :	<br/>
-content_id:Long <br/> --> Id del contenido al que se le hace el review
-revEntity_id:Long <br/> --> La entidad que hace el revie
+content_id:Long <br/> --> Id del contenido al que se le hace el review <br/>
+revEntity_id:Long <br/> --> La entidad que hace el revie <br/>
 rating:Float --> El Puntaje <br/>
  <br/>
 #### post /review
