@@ -1,10 +1,10 @@
 # lp3-2020
 /api*
 ## Usuarios
-Campos:
-String username;
-String email;
-String passw;
+Campos:<br/>
+username:String<br/>
+email:String<br/>
+passw:String<br/>
  
 #### post /user
 #### put /user/id
@@ -31,7 +31,8 @@ Extends from user
 
 ### UserPremium
 Extends from user <br/>
-Campos: ArrayList <Long> PromotionsId.  Listas de id de las promociones asignada al usuario premium
+Campos:<br/>
+promotionsId:Array[Long] .  Listas de id de las promociones asignada al usuario premium
 
 #### post /user_premium
 #### put /user_premium/{id_user}
@@ -42,7 +43,7 @@ Campos: ArrayList <Long> PromotionsId.  Listas de id de las promociones asignada
 
 ### Spectator
 Extends from user <br/>
-
+"historialReviewId":Array[Long] // Id de los reviews que consumio el espectador
 #### post /spectator
 #### put /spectator/{id_user}
 #### delete /spectator/{id_user}
@@ -50,7 +51,9 @@ Extends from user <br/>
 #### get by id /spectator/{id_user}
 
 ### ReviewEntity
-Campos 	protected String site;	protected String Name;
+Campos:<br/>
+site:String<br/>
+Name:String<br/>
 
 #### post /entityReview
 #### put /entityReview/{id}
@@ -58,10 +61,10 @@ Campos 	protected String site;	protected String Name;
 #### get /entityReview
 #### get by id /entityReview/{id}
 
-### Movie
-Campos:
-String category;
-String title;
+### Content
+Campos:<br/>
+category:String <br/>
+title:String <br/>
 
 
 #### post /content
@@ -72,9 +75,9 @@ String title;
 
 ### Movie
 Extend from content
-Campos:
-String[] directors;
-String [] Actors;
+Campos:<br/>
+directors: array(string )<br/>
+Actors:array(string )<br/>
 
 
 #### post /movie
@@ -85,8 +88,10 @@ String [] Actors;
 
 
 ### Review 
-campos :	protected Long content_id;
-	protected Long revEntity_id;
+Campos :	<br/>
+content_id:Long <br/>
+revEntity_id:Long <br/>
+
 #### post /review
 #### put /review/id
 #### delete /review/id
@@ -96,9 +101,10 @@ campos :	protected Long content_id;
 
 
 ### Promotion
-campos:	protected String name;
-	protected String site;
-	protected boolean isvalid
+campos:	<br/>
+name:String <br/>
+site:String <br/>
+isvalid:boolean<br/>
 
 #### post /promotion
 #### put /promotion/{promotion_id}
@@ -108,7 +114,8 @@ campos:	protected String name;
 
 ### Cupons
 Extended from Promotion <br/>
-campos:int Qavailable;
+campos:<br/>
+Qavailable:Long --> Cantidad de Cupones
 
 #### post /cupons
 #### put /cupons/{promotion_id}
@@ -119,7 +126,8 @@ campos:int Qavailable;
 
 ### Discount
 Extended from Promotion <br/>
-campos: float discount;
+campos:<br/>
+discount:Float<br/>
 
 #### post /discount
 #### put /discount/{promotion_id}
@@ -129,7 +137,9 @@ campos: float discount;
 
 ### Preaccess
 Extended from Promotion <br/>
-Campos:Date dateofPremiere; Movie movie;
+Campos:<br/>
+dateofPremiere:Date <br/>
+movie:Movie <br/>
   
 #### post /preaccess
 #### put /preaccess/{promotion_id}
