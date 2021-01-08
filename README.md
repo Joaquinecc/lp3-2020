@@ -82,17 +82,17 @@ directors: array(string )<br/>
 Actors:array(string )<br/>
  <br/>
  
-####post /movie
-####put /movie/{content_id}
-####delete /movie/{content_id}
-####get /movie
-####get by id /movie/{content_id}
+#### post /movie
+#### put /movie/{content_id}
+#### delete /movie/{content_id}
+#### get /movie
+#### get by id /movie/{content_id}
 
  <br/> <br/>
 ### Review 
 Campos :	<br/>
-content_id:Long <br/> --> Id del contenido al que se le hace el review <br/>
-revEntity_id:Long <br/> --> La entidad que hace el revie <br/>
+content_id:Long  --> Id del contenido al que se le hace el review <br/>
+revEntity_id:Long  --> La entidad que hace el revie <br/>
 rating:Float --> El Puntaje <br/>
  <br/>
 #### post /review
